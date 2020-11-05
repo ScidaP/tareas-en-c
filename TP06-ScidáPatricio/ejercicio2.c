@@ -37,5 +37,13 @@ int main () { // Este código funciona solamente si el usuario ingresa exactament
 		j++;
 	}
 	printf("La cantidad de apellidos es de %d\n", cantApellidos);
-	printf("La cantidad de nombres es de %d", cantNombres);
+	printf("La cantidad de nombres es de %d\n", cantNombres);
+	for (int k = 0; k < marca; k++) {
+		printf("%c", toupper(p_nombreCompleto[k]));
+	}
+	
+	for (int l = 0; l < tam-marca; l++) {
+		printf("%c", p_nombreCompleto[l+marca]);
+	}
+	return 0;
 }
