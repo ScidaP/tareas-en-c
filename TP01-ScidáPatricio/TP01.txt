@@ -1,0 +1,155 @@
+EJERCICIO 1
+
+ALGORITMO transformación_verbos
+ENTRADA: cad: cadena de caracteres, cantPal: entero positivo.
+SALIDA: cad: cadena de caracteres.
+Variables Auxiliares: ult, p_ult: carácter
+
+A1- Leer(cad)
+A2- Procesar_verbos
+A3- Parar
+
+A2. Procesar_verbos
+
+
+ult <- "";
+p_ult <- "";
+Mientras (cad <> ".") 
+	calcular_vocal(cad);
+	Si (ult = "y") ∧ (p_ult = vocal) Entonces
+		palabra = palabra + "s";
+	FIN SI
+	Si (ult = "y") ∧ (p_ult <> vocal) Entonces
+		palabra = palabra - ult + "ies";
+	FIN SI
+	Si (ult = "o") v (ult = "s" ∧ p_ult = "s") v (ult = "h" ∧ p_ult = "s") v (ult = "h" ∧ p_ult = "c") v (ult = "x") Entonces
+		palabra = palabra + "es";
+	FIN SI
+FIN MIENTRAS
+ 	Escribir (cad)
+
+FUNCION: calcular_vocal
+Argumentos: cad: cadena de caracteres con MF="."
+SALIDA: vocal: booleano
+
+Mientras (cad <> ".")
+    Si (cad = "a") V (cad = "e") V (cad = "i") V (cad = "o") V (cad = "u") Entonces
+        vocal = true;
+    Si no 
+	vocal = false;
+    FIN SI
+FIN MIENTRAS
+
+------------------------------
+EJERCICIO 2
+
+ALGORITMO: suma_numeros
+ENTRADA: numero: Reales
+SALIDA: suma, orden: enteros positivos
+Variable auxiliar: suma_parcial, total: enteros positivos.
+
+A1- Leer(numeros)
+A2- Procesar_suma
+A3- Parar
+
+A2- Procesar_suma
+
+Leer (numero)
+suma <- 0:
+orden <- 0;
+Mientras (suma + numero <= total)
+	suma <- suma + numero;
+	orden <- orden + 1;
+	Leer(numero)
+Fin Mientras
+
+------------------------------
+EJERCICIO 3
+
+ALGORITMO: encontrar_amigo
+ENTRADA: x, y: enteros.
+SALIDA: cuadrante, distancia: enteros positivos.
+Variables Aux: x0, y0.
+
+
+A1- Leer(x1, y1)
+A2- encontrar_cuadrante
+A3- Parar
+
+A2- encontrar_cuadrante
+
+x0 <- 0;
+y0 <- 0;
+cuadrante <- "";
+distancia <- "";
+
+Si (x > 0) ∧ (y > 0) Entonces
+	cuadrante <- 1;
+	Escribir(distancia_p(cuadrante, x0, y0));
+FIN SI
+Si (x < 0) ∧ (y > 0) Entonces
+	cuadrante <- 2;
+FIN SI
+Si (x < 0) ∧ (y < 0) Entonces
+	cuadrante <- 3;
+FIN SI
+Si (x > 0) ∧ (y < 0) Entonces
+	cuadrante <- 4;
+FIN SI
+Escribir ("El cuadrante del punto P es el " + cuadrante);
+
+FUNCION distancia_p
+ARGUMENTOS: cuadrante, x0, y0.
+SALIDA: distancia: entero positivo.
+Variables aux: dist1, dist2: enteros positivos
+
+Si (cuadrante = 1) Entonces
+	dist1 <- x - x0;
+	dist2 <- y - y0;
+	distancia <- (dist1**2+dist2**2)**1/2;
+FIN SI
+Escribir (distancia);
+
+-----------------------------
+EJERCICIO 4
+
+ALGORITMO: ayuda_profe_hugo
+	ENTRADAS: nombre: cadena de caracteres.
+	notaParcial1, notaParcial2, notaExamen, notaTrabajo: enteros positivos
+	SALIDAS: nombreMenorNota: cadena de caracteres
+	notaFinal: real
+	V. Auxiliares: i: entero
+	notaMenor: real
+
+
+A1. i ← 0
+A2. notaMenor ← 1000
+A3. promedios_alumnos
+A4. ESCRIBIR(nombreMenorNota)
+A5. PARAR
+
+
+A3. promedio_alumnos
+MIENTRAS (i  <  38)
+	LEER(nombre, notaParcial1, notaParcial2, notaExamen, notaTrabajo);
+	notaFinal ← calcular_nota (notaParcial1, notaParcial2, notaExamen, notaTrabajo);
+	ESCRIBIR(nombre, notaFinal);
+	SI (notaFinal < notaMenor) ENTONCES
+		notaMenor ← notaFinal;
+		nombreMenorNota ← nombre;
+	FIN SI
+	i ← i + 1;
+FIN MIENTRAS
+	
+
+FUNCIÓN: calcular_nota
+ARGUMENTOS: (notaParcial1, notaParcial2, notaExamen, notaTrabajo)
+SALIDA: notaFinal
+V. Auxiliares: nota1, nota2, nota3
+
+nota1 ← ((notaParcial1 + notaParcial2) / 2) * 0.55;
+nota2 ← (notaExamen * 0.3);
+nota3 ← (notaTrabajo * 0.15);
+
+notaFinal ← nota1 + nota2 + nota3;
+	

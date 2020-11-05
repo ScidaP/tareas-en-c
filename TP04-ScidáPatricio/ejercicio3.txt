@@ -1,0 +1,16 @@
+ALGORITMO: invertir_palabras
+ENTRADAS: texto[100]: arreglo
+SALIDAS: textoTraducido[100]: arreglo
+vbles aux: i, j <- 0
+
+A1. Escribir("Ingrese el texto a traducir")
+Leer(texto)
+
+A2. 
+para (i <- strlen(texto) - 1; i >= 0; i <- i - 1) Hacer
+	textoTraducido[j] = texto[i]
+	j <- j + 1
+FIN PARA
+
+A3. Escribir ("Texto inicial: " + texto)
+Escribir ("Texto traducido: " + textoTraducido)

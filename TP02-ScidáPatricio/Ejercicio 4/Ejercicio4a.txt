@@ -1,0 +1,13 @@
+Algoritmo: Contar_vocales
+Entrada: texto, cadena de caracteres con MF en "."
+Salida: cantidadVocales
+
+A1. Leer (texto)
+A2. Mientras (cc <> ".")
+	Leer(cc)
+	Si (cc = "a") v (cc = "e") v (cc = "i") v (cc = "o") v (cc = "u") v (cc = "A") v (cc = "E") v 
+	(cc = "I") v (cc = "O") v (cc = "U")
+	cantidadVocales <- cantidadVocales + 1
+	FIN SI
+A3. Escribir ("La cantidad de vocales es de " + cantidadVocales)
+A4. PARAR

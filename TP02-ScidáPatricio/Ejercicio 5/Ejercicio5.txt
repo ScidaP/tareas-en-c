@@ -1,0 +1,22 @@
+ALGORITMO: contarNumeros
+ENTRADA: inicio, fin
+SALIDA: contadorNumeros, contadorPares, sumaImpares.
+Vbles Aux: i.
+
+A1. Leer(inicio)
+	Leer(fin)
+A2. Para (i=inicio, i < fin, i=i+1) 
+	contadorNumeros <- contadorNumeros + 1
+	Si (i % 2 == 0) 
+		contadorPares = contadorPares + 1
+	Si no si (i % 2 != 0)
+		sumaImpares = sumaImpares + i
+	FIN SI
+FIN PARA
+
+A3.
+Escribir ("La cantidad de numeros entre " + inicio + " y " + fin + " es de " + contadorNumeros + ".")
+Escribir ("La cantidad de numeros pares es de " + contadorPares + ".")
+Escribir ("La suma de numeros impares es de " + sumaImpares + ".")
+
+A4. PARAR

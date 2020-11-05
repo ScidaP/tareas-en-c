@@ -1,0 +1,11 @@
+ALGORITMO: horas.
+ENTRADAS: segundos, minutos, horas, correcto: entero positivo.
+SALIDAS: segundosTotales
+
+A1. Leer(segundos, minutos, horas)
+A2. Mientras ((horas >= 0 ∧ horas<=23) ∧ (minutos >=0 ∧ minutos<=59) ∧ (segundos >= 0 ∧ segundos <= 59)) HACER
+	segundosTotales = horas*360 + minutos*60 + segundos;
+	Escribir ("La cantidad de segundos es de")
+FIN MIENTRAS
+A3. Escribir (segundosTotales)
+A4. PARAR.

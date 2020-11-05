@@ -1,0 +1,106 @@
+ALGORITMO: Vocales diferentes
+
+ENTRADAS: caracter: cadena de caracteres con MF = “.”
+
+SALIDAS: palabras: número entero positivo
+
+V. aux.: num_a, num_e, num_i, num_o, num_u, vocales_distintas: números enteros positivos
+
+
+A1. inicializar
+
+A2. LEER (caracter)
+
+A3. analizar_cadena
+
+A4. ESCRIBIR (palabras)
+
+A5. PARAR
+
+
+A1. inicializar
+
+       palabras ← 0, cant_a ← 0, cant_e ← 0, cant_i ← 0, cant_o ← 0, cant_u ← 0,
+
+       vocalesDistintas ← 0
+
+
+A3. analizar_cadena
+
+        A3.1. MIENTRAS (caracter <> MF)
+
+                A3.1.1. SI (caracter <> “ ”) ENTONCES
+
+                                 SEGUN caracter
+
+		“a”:
+
+                        num_a ← num_a + 1
+
+                “e”:
+
+                        num_e ← num_e + 1
+
+                “i”:
+
+                        num_i ← num_i + 1
+
+                “o”:
+
+                        num_o ← num_o + 1
+
+                “u”:
+
+                        num_u ← num_u + 1
+
+FIN SEGUN
+
+ESCRIBIR (caracter)
+
+SINO
+
+                ESCRIBIR ( * )
+
+        SI (num_a > 0) ENTONCES
+
+                vocalesDistintas ← vocalesDistintas + 1
+
+        fin SI
+
+        SI (num_e > 0) ENTONCES
+
+                vocalesDistintas ← vocalesDistintas + 1
+
+        fin SI
+
+        SI (num_i > 0) ENTONCES
+
+                vocalesDistintas ← vocalesDistintas + 1
+
+        fin SI
+
+        SI (num_o > 0) ENTONCES
+
+                vocalesDistintas ← vocalesDistintas + 1
+
+        fin SI
+
+        SI (num_u > 0) ENTONCES
+
+                vocalesDistintas ← vocalesDistintas + 1
+
+        fin SI
+
+        SI (vocalesDistintas ≥ 3) ENTONCES
+
+                palabras ← palabras + 1
+
+        fin SI
+
+A3.1.2. num_a ← 0, num_e ← 0, num_i ← 0, num_o ← 0, num_u ← 0,
+
+                       vocalesDistintas ← 0
+
+                A3.1.3. LEER (caracter)
+
+        fin MIENTRAS

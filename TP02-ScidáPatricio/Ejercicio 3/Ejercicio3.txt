@@ -1,0 +1,27 @@
+ALGORITMO: Subsidio
+ENTRADAS: medio, padres: cadena de caracteres.
+distancia, hijosEnEscuela: enteros positivos.
+SALIDA: subisidio.
+
+A1. Leer (medio, padres, distancia, hijosEnEscuela)
+A2. Si (medio == "Omnibus") 
+	subsidio <- 1000
+SI NO SI (medio == "Transporte Público") 
+	subsidio <- 500
+SI NO SI (medio == "Pie")
+	Si (distancia > 3)
+		Si (padres == "No")
+			Si (hijosEnEscuela > 3)
+				subsidio <- 3000
+			FIN SI
+		SI NO SI (padres == "Si")
+			Escribir("Usted recibe el plan ESTUDIAR")
+			subsidio <- 5000
+		FIN SI
+	Si no 
+	subsidio <- 0
+	FIN SI
+Fin si
+
+Escribir("Correspondiendo con los datos ingresados, usted recibe un subsidio de " + subsidio + ".")
+A3. PARAR
