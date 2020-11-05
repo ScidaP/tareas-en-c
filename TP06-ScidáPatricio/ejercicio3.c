@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void calcularEstadisticas(float *registro, int cantidad);
+void calcuarEstadisticas(float *registro, int cantidad);
 
 int main () {
 	float *p_registroLluvias;
@@ -14,13 +14,13 @@ int main () {
 	
 	for (int i = 0; i < cant; i++) {
 		printf("Ingrese el registro #%d\n", i);
-		scanf("%d", &p_registroLluvias[i]);
+		scanf("%f", &p_registroLluvias[i]);
 	}
 	
-	calcularEstadisticas(p_registroLluvias, cant);
+	calcuarEstadisticas(p_registroLluvias, cant);
 }
 
-void calcularEstadisticas(float *registro, int cantidad) {
+void calcuarEstadisticas(float *registro, int cantidad) {
 	//Calcular el mayor número del array
 	float mayor = 0;
 	for (int i = 0; i < cantidad; i++){
@@ -28,5 +28,21 @@ void calcularEstadisticas(float *registro, int cantidad) {
 			mayor = registro[i];
 		}
 	}
-	printf("El numero mayor es %d", mayor);
+	//Calcular el menor número del array
+	float menor = mayor;
+	for (int k = 0; k < cantidad; k++) {
+		if (registro[k] < menor) {
+			menor = registro[k];
+		}
+	}
+	//Calcular el promedio de los números del array
+	float total, promedio;
+	for (int j = 0; j < cantidad; j++) {
+		total += registro[j];
+		promedio = total / cantidad;
+	}
+	
+	printf("El numero mayor es %f\n", mayor);
+	printf("El numero menor es %f\n", menor);
+	printf("El promedio de todos los números del array es %f", promedio);
 }
