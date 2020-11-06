@@ -46,4 +46,5 @@ int main () { // Este código funciona solamente si el usuario ingresa exactament
 		printf("%c", p_nombreCompleto[l+marca]);
 	}
 	return 0;
+	free(p_nombreCompleto);
 }

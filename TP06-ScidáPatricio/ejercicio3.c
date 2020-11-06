@@ -18,6 +18,7 @@ int main () {
 	}
 	
 	calcuarEstadisticas(p_registroLluvias, cant);
+	free(p_registroLluvias);
 }
 
 void calcuarEstadisticas(float *registro, int cantidad) {
