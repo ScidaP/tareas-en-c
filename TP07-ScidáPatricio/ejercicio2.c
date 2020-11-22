@@ -29,7 +29,7 @@ void cargarArboles(ref *pArboles, int cant) {
         fflush(stdin);
         puts("Ingrese la cantidad");
         scanf("%d", &pArboles->stock);
-        fflush(stdin);
+        pArboles++;
     }
 }
 
