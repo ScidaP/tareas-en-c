@@ -11,6 +11,18 @@ typedef struct reforestacion {
     int stock;
 } ref;
 
+void arbolCategoria(ref *pArboles, int cant, char *p_categoria) {
+    for (int i=0; i < cant; i++) {
+        if (strcmp(pArboles->categoria, p_categoria) == 0) {
+            if (pArboles->stock < 3) {
+                pArboles->stock += 5;
+            }
+            mostrarUnArbol(pArboles);
+        }
+        pArboles++;
+    }
+}
+
 void cargarArboles(ref *pArboles, int cant) {
     for (int i=0; i < cant; i++){
         printf("---Ingresando datos del arbol N: %d---\n", i+1);
@@ -61,8 +73,13 @@ void mostrarTodosArboles(ref *pArboles, int cant)
 int main () {
     ref arboles[MAX];
     int cant;
+    char categoria[50];
     printf("Ingrese cuantos arboles quiere cargar\n");
     scanf("%d", &cant);
     cargarArboles(arboles, cant);
     mostrarTodosArboles(arboles, cant);
+    printf("Ingresar una categoria: ");
+    fflush(stdin);
+    gets(categoria);
+    arbolCategoria(arboles, 3, categoria);
 }
