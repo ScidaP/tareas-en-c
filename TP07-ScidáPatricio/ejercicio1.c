@@ -12,10 +12,11 @@ typedef struct medicamentos {
     char indicacion[40];
 }inventario;
 
-void contarInyectable(inventario *medicamentos, int cant_inyectable) { /* Función para calcular la cantidad de medicamentos que son inyectables*/
+void contarInyectable(inventario *medicamentos, int *cant_inyectable) { /* Función para calcular la cantidad de medicamentos que son inyectables*/
     char tipo[20] = "Inyectable";
-    if(strcmp(medicamentos->presentacion, tipo) == 0){
-        cant_inyectable++;
+    char tipo1[20] = "inyectable";
+    if(strcmp(medicamentos->presentacion, tipo) == 0 || strcmp(medicamentos->presentacion, tipo1) == 0){
+        (*cant_inyectable)++;
     }
 }
 
