@@ -1,28 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
-esTautograma(char *pFrase) {   
-    char primerasLetras[20];
-    primerasLetras[0] = pFrase[0];
-    int tamanio = strlen(pFrase);
+#define MAX 100
 
-    for (int i = 0; i < tamanio; i++) {
-        if (pFrase[i] != ' ') {
-            pFrase++;
+esTautograma(char *pFrase, char *pIniciales) {   
+    int i, j = 0, k = 0, resultado;
+    char charAnterior = ' ';
+    while (pFrase[j] != '\0') {
+        if (charAnterior == ' ' && isalpha(pFrase[j])) {
+            pIniciales[k] = pFrase[j];
+            k++;
+        }
+        charAnterior = pFrase[j];
+        j++;
+    }
+
+    pIniciales[k] = '\0'; //Agrego la marca final
+    puts(pIniciales);
+
+    for (i=0; i < k-1; i++) {
+        if (pIniciales[i] == pIniciales[i+1]) {
+            resultado = 1;
         } else {
-            pFrase++;
-            primerasLetras[i] = pFrase[i];
+            resultado = 0;
+            break;
         }
     }
-    for (int j = 0; j < strlen(primerasLetras); j++) {
-        printf("%c", primerasLetras[j]);
-    }
+    return resultado;
 }   
 
 int main() {
-    char frase[100];
+    char frase[MAX], iniciales[MAX], resultado;
+    printf("Ingrese una frase para verificar si es tautograma\n");
     gets(frase);
-    char *pFrase = frase;
-    esTautograma(pFrase);
+    resultado = esTautograma(frase, iniciales);
+
+    if (resultado == 1) {
+        printf("La frase es un tautograma\n");
+    } else {
+        printf("La frase no es un tautograma\n");
+    }
 }
