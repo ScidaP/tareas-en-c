@@ -43,47 +43,81 @@ void agendarPersona(pers *pPersona, int cant) {
     }
 }
 
-void mostrarPersona(pers *pPersona, int cant) { // Solo para verificar que los datos carguen bien. No se la usa por ahora.
-    for (int i = 0; i < cant; i++) {
-        printf("-----------Mostrando datos de la persona %d-----------\n", i+1);
-        printf("Nombre: %s\n", pPersona->nombre);
-        printf("Apellido: %s\n", pPersona->apellido);
-        printf("Tipo de DNI: %c\n", pPersona->dni.tipo);
-        printf("Numero de DNI: %d\n", pPersona->dni.numero);
-        printf("Domicilio: %s\n", pPersona->domicilio);
-        printf("Tipo de telefono: %c\n", pPersona->tipo);
-        printf("Numero de telefono: %lu\n", pPersona->numeroTel);
-    }
+void mostrarPersona(pers *pPersona) { // Solo para verificar que los datos carguen bien. No se la usa por ahora.
+    printf("-----------Mostrando datos de la persona %s %s-----------\n", pPersona->nombre, pPersona->apellido);
+    printf("Nombre: %s\n", pPersona->nombre);
+    printf("Apellido: %s\n", pPersona->apellido);
+    printf("Tipo de DNI: %c\n", pPersona->dni.tipo);
+    printf("Numero de DNI: %d\n", pPersona->dni.numero);
+    printf("Domicilio: %s\n", pPersona->domicilio);
+    printf("Tipo de telefono: %c\n", pPersona->tipo);
+    printf("Numero de telefono: %lu\n", pPersona->numeroTel);
 }
 
-void buscarporApellido(pers *pPersona, char ape) {
-    for (int i=0;i < MAX; i++) {
-        if (strcmp(pPersona->apellido, ape) == 0) {
-            mostrarPersona(pPersona, 1);
-        }
-    }
-}
-
-void borrarUsuario(pers *pPersona, char *dni, int cant) {
-    for (int i = 0; i < cant; i++) {
-            if (strcmp(pPersona->dni.numero, dni) == 0) {
-                (*pPersona->nombre) = ' ';
-                (*pPersona->apellido) = ' ';            
-        }
+void buscarPorApellido(pers *pPersona, int cant) {
+    char elegir;
+    puts("Desea buscar una persona por apellido? S/N");
+    fflush(stdin);
+    scanf("%c", &elegir);
+    if (elegir == 'S') {
+        char ape[MAX];
+        puts("Ingrese el apellido que desea buscar.");
+        fflush(stdin);
+        gets(ape);
+        for (int i=0;i < cant; i++) {
+            if (strcmp(pPersona->apellido, ape) == 0) {
+            mostrarPersona(pPersona);
+            }
         pPersona++;
+        }
+    } else {
+        int j;
+        for (j = 0; j < cant; j++) {
+            mostrarPersona(&pPersona[j]);
+        }
+    }
+}
+
+void borrarUsuario(pers *pPersona, pers *pActualizado, int cant) {
+    char elegir;
+    puts("Desea borrar algun usuario? S/N");
+    fflush(stdin);
+    scanf("%c", &elegir);
+    if (elegir == 'S') {
+        int i = 0, j = 0, buscarDni;
+        puts("Ingrese el dni de un usuario a eliminar");
+        scanf("%d", &buscarDni);
+        for (i; i < cant; i++) {
+            if (pPersona->dni.numero != buscarDni) {
+                pActualizado[j] = *pPersona;
+                j++;
+            }
+        pPersona++;     
+        } 
+        puts("------------USUARIO BORRADO------------");
+        puts("---------------------------------------");
+        for (int k = 0; k < cant-1; k++) {
+            puts("Mostrando todos los usuarios registrados");
+            mostrarPersona(&pActualizado[k]);
+        }
+    } else {
+            for (int k = 0; k < cant; k++) {
+                puts("---Mostrando todos los usuarios registrados---");
+                mostrarPersona(&pPersona[k]);
+        };
     }
 }
 
 int main() {
-    pers personas[MAX];
+    pers personas[MAX], personasActualizada[MAX];
     int cantPersonas;
-    int buscarDni;
     // PRIMERA PARTE: AGENDAR USUARIOS
     puts("Ingrese cuantas personas quiere agendar.\n");
     scanf("%d", &cantPersonas);
     agendarPersona(personas, cantPersonas);
-    // SEGUNDA PARTE: BORRAR USUARIOS
-    puts("Ingrese el apellido de un usuario a eliminar");
-    gets(buscarDni);
-    borrarUsuario(personas, buscarDni, cantPersonas);
+    // SEGUNDA PARTE: BUSCAR PERSONA POR APELLIDO
+    buscarPorApellido(personas, cantPersonas);
+    // TERCERA PARTE: BORRAR USUARIO
+    borrarUsuario(personas, personasActualizada, cantPersonas);
+    // CUARTA PARTE: LISTAR PERSONAS AGENDADAS
 }
