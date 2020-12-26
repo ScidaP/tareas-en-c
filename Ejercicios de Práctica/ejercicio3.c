@@ -43,7 +43,7 @@ void agendarPersona(pers *pPersona, int cant) {
     }
 }
 
-void mostrarPersona(pers *pPersona) { // Solo para verificar que los datos carguen bien. No se la usa por ahora.
+void mostrarPersona(pers *pPersona) { 
     printf("-----------Mostrando datos de la persona %s %s-----------\n", pPersona->nombre, pPersona->apellido);
     printf("Nombre: %s\n", pPersona->nombre);
     printf("Apellido: %s\n", pPersona->apellido);
@@ -112,7 +112,7 @@ int main() {
     pers personas[MAX], personasActualizada[MAX];
     int cantPersonas;
     // PRIMERA PARTE: AGENDAR USUARIOS
-    puts("Ingrese cuantas personas quiere agendar.\n");
+    puts("Ingrese cuantas personas quiere agendar.");
     scanf("%d", &cantPersonas);
     agendarPersona(personas, cantPersonas);
     // SEGUNDA PARTE: BUSCAR PERSONA POR APELLIDO
